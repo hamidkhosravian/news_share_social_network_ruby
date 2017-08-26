@@ -1,0 +1,12 @@
+# airbrake
+# AIRBRAKE_PROJECT_ID: '145927'
+# AIRBRAKE_API_KEY: '92f0ab7b7e2c414f34228a80ff6b084e'
+# base url for assets
+# BASE_URL: 'http://localhost:3000/'
+
+# token config
+# TOKEN_EXPIRATION: "365" # expire duration in days
+
+# ACUITY_BASE_URL: ''
+# ACUITY_USER_ID: ''
+# ACUITY_API_KEY: ''
