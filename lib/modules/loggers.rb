@@ -33,15 +33,11 @@ module Modules
       end
 
       def self.make_dir(path)
-        if (!File.directory? path)
-          FileUtils.mkpath path
-        end
+        FileUtils.mkpath path unless File.directory? path
       end
 
       def self.make_file(path_to_file)
-        if (!File.exists? path_to_file)
-          FileUtils.touch path_to_file
-        end
+        FileUtils.touch path_to_file unless File.exists? path_to_file
       end
   end
 end

@@ -14,7 +14,7 @@ module Helpers::AuthHelper
   def login_user!(email, password)
     user = ::User.where(email: email).first
     # invalid email
-    raise BadRequestError.new(I18n.t("messages.authentication.login.email_password_mismatch")) if user.nil?
+    raise BadRequestError, I18n.t("messages.authentication.login.email_password_mismatch") if user.nil?
     # check if email andd password is valid
     if user && user.valid_password?(password)
       create_token user
@@ -36,14 +36,14 @@ module Helpers::AuthHelper
   def refresh_user!(token)
     auth_token = AuthToken.where(refresh_token: token).first
     # invalid refresh token
-    raise BadRequestError.new(I18n.t("messages.authentication.login.refresh_token")) if auth_token.nil?
+    raise BadRequestError, I18n.t("messages.authentication.login.refresh_token") if auth_token.nil?
     # refresh token expires
     if auth_token.refresh_token_expires_at.nil? || auth_token.refresh_token_expires_at > Time.now
       user = auth_token.tokenable
       create_token user
       return user
     else
-      raise AuthError.new(I18n.t("messages.authentication.login.refresh_token"))
+      raise AuthError, I18n.t("messages.authentication.login.refresh_token")
     end
   end
 
@@ -78,7 +78,7 @@ module Helpers::AuthHelper
     custom_code = args[2][:code] if args[2].present? && args[2][:code].present?
     message = custom_message ||= I18n.t("messages.http._403")
     code = custom_code ||= 403
-    return message, code
+    [message, code]
   end
 
   private

@@ -53,6 +53,6 @@ module Auth
     private
       # generate random string for refresh token
       def generate_refresh_token
-        return Digest::MD5.hexdigest(Time.now.to_s) + SecureRandom.hex
+        Digest::MD5.hexdigest(Time.now.to_s) + SecureRandom.hex
       end
 end

@@ -3,5 +3,5 @@ class AuthToken < ApplicationRecord
 
   validates :token, length: { minimum: 20 }, uniqueness: true
   validates :refresh_token, length: { minimum: 20 }, uniqueness: true
-  validates_datetime :token_expires_at, after: lambda { DateTime.now }, on: [:create]
+  validates_datetime :token_expires_at, after: -> { DateTime.now }, on: [:create]
 end

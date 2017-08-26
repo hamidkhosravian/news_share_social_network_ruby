@@ -15,15 +15,15 @@ class AuthService
 
   # check user token
   def authenticate_user!
-    raise AuthError if !valid_to_proceed?
+    raise AuthError unless valid_to_proceed?
     @current_user = ::User.find(decoded_auth_token[:user_id])
     @current_user
   end
 
   # destory user token
   def destroy_session!
-    raise AuthError if !valid_to_logout?
-    return decoded_auth_token[:user_id]
+    raise AuthError unless valid_to_logout?
+    decoded_auth_token[:user_id]
   end
 
   private

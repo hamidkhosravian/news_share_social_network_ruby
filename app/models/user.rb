@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook, :twitter]
+         :omniauthable, omniauth_providers: [:facebook, :twitter]
 
    include Auth
 
@@ -15,8 +15,6 @@ class User < ApplicationRecord
 
    private
      def set_roles
-       if self.new_record?
-         self.role ||= :register
-       end
+       self.role ||= :register if self.new_record?
      end
 end
