@@ -34,14 +34,14 @@ class UserService
     if user.nil?
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      user = User.where(:email => email).first if email
+      user = User.where(email: email).first if email
 
       if user.nil?
+        email_provider = auth.info.email || "#{auth.info.name.delete(' ')}-#{auth.uid}@#{auth.provider}.com"
         user = User.new(
-          email: email ? email : "#{auth.info.name.delete(' ')}-#{auth.uid}@#{auth.provider}.com",
+          email: email ? email : email_provider,
           password: Devise.friendly_token[0,20]
         )
-        byebug
         user.save!
       end
     end

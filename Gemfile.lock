@@ -426,6 +426,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-linkedin
+  omniauth-oauth2
   omniauth-twitter
   paperclip (~> 5.1.0)
   pg (~> 0.18)
