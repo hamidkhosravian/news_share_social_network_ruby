@@ -8,7 +8,8 @@ class User < ApplicationRecord
    include Auth
 
    enum role: [:register, :block]
-   validates :email, presence: true, uniqueness: { case_sensitive: false }
+   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
+
    has_many :auth_tokens, as: :tokenable, autosave: true
 
    after_initialize :set_roles
