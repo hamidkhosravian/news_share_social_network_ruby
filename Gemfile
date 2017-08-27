@@ -13,7 +13,8 @@ gem "pg", "~> 0.18"
 # Use Puma as the app server
 gem "puma", "~> 3.7"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.5"
+# gem "jbuilder", "~> 2.5"
+gem "active_model_serializers"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 3.0"
 gem "redis-rails"
@@ -27,6 +28,7 @@ gem "rack-cors"
 gem "jwt"
 gem "devise"
 gem "cancancan"
+gem "omniauth-oauth2"
 gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "omniauth-linkedin"
@@ -66,6 +68,7 @@ gem "gibbon"
 gem "geocoder"
 gem "acts_as_votable"
 gem "acts-as-taggable-on"
+gem "validates_timeliness"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
