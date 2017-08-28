@@ -3,6 +3,6 @@ FactoryGirl.define do
     name Faker::Name.name
     birthday Faker::Date.birthday
     summery Faker::Lorem.sentence
-    gender ["male", "female", "other"].sample
+    gender %w[male female other].sample
   end
 end
