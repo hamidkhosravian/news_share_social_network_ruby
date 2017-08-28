@@ -2,6 +2,7 @@ module Api
   module V1
     class ApiController < ApplicationController
       include Helpers::AuthHelper
+      include CanCan::ControllerAdditions
 
       protected
         # before anything check user authentication

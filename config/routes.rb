@@ -12,6 +12,11 @@ Rails.application.routes.draw do
       put    "forgot_password" => "authentication#forgot_password"
       put    "reset_password"  => "authentication#reset_password"
       put    "change_password" => "authentication#change_password"
+
+      get    "profile" => "profile#show"
+      get    "profile/:user_id" => "profile#show_profile"
+      put    "profile" => "profile#update"
+      post   "profile/upload_avatar" => "profile#upload_avatar"
     end
   end
 

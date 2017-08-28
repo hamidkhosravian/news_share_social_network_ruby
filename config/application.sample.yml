@@ -1,3 +1,4 @@
+BASE_URL: ""
 AUTH_TOKEN_TTL: ''
 
 #facebook
