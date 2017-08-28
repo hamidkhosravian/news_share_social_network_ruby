@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :profile do
-    name "MyString"
-    birthday "2017-08-27"
-    summery "MyText"
-    gender 1
-    user nil
+    name Faker::Name.name
+    birthday Faker::Date.birthday
+    summery Faker::Lorem.sentence
+    gender ["male", "female", "other"].sample
   end
 end

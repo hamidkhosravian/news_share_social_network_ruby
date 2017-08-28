@@ -4,10 +4,16 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+
+require "support/helpers/controller_helpers"
+require "support/helpers/request_helpers"
+
 require "rspec/rails"
 require "spec_helper"
 require "devise"
 require "factory_girl"
+
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -60,4 +66,8 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Helpers
   config.include Rails.application.routes.url_helpers
+
+  # include helpers
+  config.include ControllerHelpers, type: :controller
+  config.include RequestHelpers, type: :request
 end
