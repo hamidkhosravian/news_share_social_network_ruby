@@ -13,10 +13,16 @@ Rails.application.routes.draw do
       put    "reset_password"  => "authentication#reset_password"
       put    "change_password" => "authentication#change_password"
 
+      # profile detail
       get    "profile" => "profile#show"
       get    "profile/:user_id" => "profile#show_profile"
       put    "profile" => "profile#update"
       post   "profile/upload_avatar" => "profile#upload_avatar"
+
+      # follower and following
+      post   "profile/:user_id/follow" => "relationship#create"
+      delete "profile/:user_id/unfollow" => "relationship#destroy"
+
     end
   end
 
