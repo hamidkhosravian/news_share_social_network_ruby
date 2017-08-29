@@ -1,5 +1,5 @@
 class ProfileSerializer < ActiveModel::Serializer
-  attributes :user_id, :name, :summery, :gender, :birthday, :avatar
+  attributes :user_id, :name, :avatar
 
   def user_id
     object.user.id
