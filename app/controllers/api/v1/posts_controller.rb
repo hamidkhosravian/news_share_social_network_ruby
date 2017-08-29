@@ -4,9 +4,18 @@ module Api
       before_action :authenticate_user_from_token!
       load_and_authorize_resource only: [:update, :destroy]
 
+      def show
+        post = Post.find(params[:id])
+        if post.profile.eql?(current_user.profile)
+          render json: post, serializer: PostOwnerSerializer
+        else
+          render json: post
+        end
+      end
+
       def create
         post = PostService.new(params, current_user).register
-        render json: PostSerializer.new(post[:post])
+        render json: post[:post]
       end
 
       def update
