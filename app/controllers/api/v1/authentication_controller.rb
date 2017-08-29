@@ -47,7 +47,6 @@ module Api
 
       def change_password
         authenticate!
-        authorize! :change_password, AuthenticationController
         raise AuthError if current_user[:status] == 401
         raise BadRequestError, "Invalid old password" unless current_user.valid_password?(params[:old_password])
 

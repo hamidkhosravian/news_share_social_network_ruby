@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
 
   rescue_from JWT::ExpiredSignature, with: :render_jwt_time_out
+  rescue_from CanCan::AccessDenied, with: :render_cancancan
   rescue_from AuthError, with: :render_jwt_auth_error
   rescue_from BadRequestError, with: :render_bad_request_error
   rescue_from ServerError, with: :render_server_error
@@ -9,6 +10,10 @@ class ApplicationController < ActionController::API
   protected
     def render_jwt_time_out
       render json: Helpers::ErrorHelper.error!(I18n.t("messages.authentication.timeout"), 401), status: 401
+    end
+
+    def render_cancancan(error)
+      render json: Helpers::ErrorHelper.error!(error, 401), status: 401
     end
 
     def render_jwt_auth_error
