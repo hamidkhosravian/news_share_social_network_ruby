@@ -24,5 +24,4 @@ RSpec.describe Api::V1::ProfileController, type: :controller do
       expect(response).to have_http_status(:unauthorized)
     end
   end
-
 end

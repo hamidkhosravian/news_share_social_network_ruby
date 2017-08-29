@@ -31,7 +31,7 @@ module Api
       def show_profile
         param! :user_id, Integer, required: true, blank: false
         profile = User.find(params[:user_id]).profile
-        render json: profile
+        render json: profile, serializer: ShowProfileSerializer
       end
     end
   end
