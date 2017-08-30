@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_user_from_token!
       load_and_authorize_resource only: [:update, :destroy]
       impressionist actions: [:show]
-      
+
       def show
         post = Post.find(params[:id])
         if post.profile.eql?(current_user.profile)

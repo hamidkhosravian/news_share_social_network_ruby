@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       # post
       resources :posts, only: [:create, :show, :update]
 
+      # find near
+      post   "near/posts" => "find_near#posts"
     end
   end
 
