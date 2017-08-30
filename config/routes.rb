@@ -32,6 +32,10 @@ Rails.application.routes.draw do
 
       # categories
       get    "categories" => "categories#index"
+
+      # vote
+      post   "post/:id/like"    => "votes#like_post"
+      post   "post/:id/unlike"  => "votes#unlike_post"
     end
   end
 
