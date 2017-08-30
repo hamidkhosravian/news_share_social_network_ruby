@@ -8,9 +8,9 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     end
     it "return 400 when content is empty" do
       token = sign_in_as_registered
-      expect {
+      expect do
         post :create, params: FactoryGirl.attributes_for(:post_unvalid)
-      }.to raise_error(RailsParam::Param::InvalidParameterError)
+      end.to raise_error(RailsParam::Param::InvalidParameterError)
     end
   end
 

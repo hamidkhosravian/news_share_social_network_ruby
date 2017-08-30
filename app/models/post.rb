@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  is_impressionable
+
   has_attached_file :attachment, styles: { thumbnail: "500x500>", medium: "800x800>", large: "1200x1200>" }, url: "/Posts/:profile_id-:email/:id/:filename"
   validates_attachment_content_type :attachment, content_type: /\Aimage/
   validates_with AttachmentSizeValidator, attributes: :attachment, less_than: 5.megabytes

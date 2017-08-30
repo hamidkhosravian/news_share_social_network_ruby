@@ -3,6 +3,7 @@ module Api
     class PostsController < ApiController
       before_action :authenticate_user_from_token!
       load_and_authorize_resource only: [:update, :destroy]
+      impressionist actions: [:show]
 
       def show
         post = Post.find(params[:id])

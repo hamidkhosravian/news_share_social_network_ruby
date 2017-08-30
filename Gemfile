@@ -66,9 +66,10 @@ gem "gibbon"
 
 # Social Network Gems
 gem "geocoder"
-gem "acts_as_votable"
-gem "acts-as-taggable-on"
-gem "validates_timeliness"
+gem "acts_as_votable" # like or dislike
+gem "acts-as-taggable-on" # add tags
+gem "impressionist" # count views
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
