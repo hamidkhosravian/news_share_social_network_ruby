@@ -21,7 +21,7 @@ module Helpers::AuthHelper
       return user
     else
       # invalid email and passowrd
-      raise I18n.t("messages.authentication.login.email_password_mismatch")
+      raise BadRequestError, I18n.t("messages.authentication.login.email_password_mismatch")
     end
   end
 

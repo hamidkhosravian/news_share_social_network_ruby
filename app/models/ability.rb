@@ -28,5 +28,6 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    can :update, Post, profile_id: user.profile.id 
   end
 end

@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       post   "profile/:user_id/follow" => "relationship#create"
       delete "profile/:user_id/unfollow" => "relationship#destroy"
 
+      # post
+      resources :posts, only: [:create, :show, :update]
+
     end
   end
 
