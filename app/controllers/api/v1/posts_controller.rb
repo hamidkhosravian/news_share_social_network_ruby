@@ -14,8 +14,12 @@ module Api
       end
 
       def create
+        param! :content, String, required: true, blank: false
+        param! :latitude, String, required: true, blank: false
+        param! :longitude, String, required: true, blank: false
+
         post = PostService.new(params, current_user).register
-        render json: post[:post]
+        render json: post[:post], status: 201
       end
 
       def update
