@@ -29,6 +29,7 @@ module Api
         post = Post.find(params[:id])
         post.content = params[:content] unless params[:content].nil?
         post.attachment = params[:attachment]
+        post.categories = Category.find(params[:categories]) if params[:categories]
         post.save!
 
         render json: post

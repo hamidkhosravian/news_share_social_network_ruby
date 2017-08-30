@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 500 }
 
   belongs_to :profile
+  has_and_belongs_to_many :categories, -> { distinct }
 
   before_create :set_address
 
