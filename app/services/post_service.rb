@@ -20,6 +20,7 @@ class PostService
       post.content = @params[:content]
       post.latitude = @params[:latitude]
       post.longitude = @params[:longitude]
+      post.attachment = @params[:attachment]
       post.profile_id = @current_user.profile.id
       post.save
       errors = post.errors.messages
