@@ -1,5 +1,6 @@
 class PostSerializer < ActiveModel::Serializer
   attributes :id, :content, :profile, :address, :created_at, :attachment, :views_count
+  has_many :categories
 
   def profile
     ProfileSerializer.new(object.profile)
@@ -12,4 +13,5 @@ class PostSerializer < ActiveModel::Serializer
   def views_count
     object.impressionist_count(filter: :user_id)
   end
+
 end

@@ -26,8 +26,12 @@ Rails.application.routes.draw do
       # post
       resources :posts, only: [:create, :show, :update]
 
-      # find near
+      # find near posts
       post   "near/posts" => "find_near#posts"
+      post   "near/categories/:id/posts" => "find_near#posts_base_on_category"
+
+      # categories
+      get    "categories" => "categories#index"
     end
   end
 

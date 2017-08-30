@@ -21,6 +21,7 @@ class PostService
       post.latitude = @params[:latitude]
       post.longitude = @params[:longitude]
       post.attachment = @params[:attachment]
+      post.categories << Category.find(@params[:categories]) if @params[:categories]
       post.profile_id = @current_user.profile.id
       post.save
       errors = post.errors.messages
