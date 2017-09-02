@@ -15,6 +15,7 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def liked
+    byebug
     current_user.liked? object
   end
 
