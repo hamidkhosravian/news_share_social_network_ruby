@@ -19,3 +19,7 @@
 config/application.yml
 config/database.yml
 config/secrets.yml
+
+# public images
+public/Posts
+public/Users

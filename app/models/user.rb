@@ -16,6 +16,8 @@ class User < ApplicationRecord
    after_create :create_profile
    after_initialize :set_roles
 
+   acts_as_voter
+
    private
      def set_roles
        self.role ||= :register if self.new_record?
