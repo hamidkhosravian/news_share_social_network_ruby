@@ -5,12 +5,12 @@ module Api
       load_and_authorize_resource only: [:destroy]
 
       def index
-        comments = Post.find(params[:id]).comments
+        comments = Post.find(params[:post_id]).comments
         render json: comments, status: 200
       end
 
       def show
-        comment = Comment.find(params[:id])
+        comment = Comment.find(params[:post_id])
         render json: comment, status: 200
       end
 
