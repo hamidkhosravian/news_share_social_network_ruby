@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 	after_validation :geocode
   validates :content, presence: true, length: { maximum: 500 }
 
-  belongs_to :profile, presence: true
+  belongs_to :profile
   has_and_belongs_to_many :categories, -> { distinct }
   has_many :comments, dependent: :destroy
 

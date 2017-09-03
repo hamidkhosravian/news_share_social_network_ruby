@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
 
   enum gender: [:male, :female, :other]
 
-  belongs_to :user, presence: true
+  belongs_to :user
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent: :destroy

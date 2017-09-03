@@ -19,7 +19,7 @@ module Api
         param! :latitude, String, required: true, blank: false
         param! :longitude, String, required: true, blank: false
 
-        post = PostService.new(params, current_user).register
+        post = PostService.new(params, current_user).create
         render json: post[:post], status: 201
       end
 
@@ -33,6 +33,10 @@ module Api
         post.save!
 
         render json: post
+      end
+
+      def destroy
+        Post.find(params[:id]).destroy
       end
     end
   end

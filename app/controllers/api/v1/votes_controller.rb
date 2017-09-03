@@ -14,6 +14,18 @@ module Api
         post.unliked_by current_user
         render json: {response: "unlike post.", status: 204}, status: 204
       end
+
+      def like_comment
+        comment = Comment.find(params[:id])
+        comment.liked_by current_user
+        render json: {response: "like comment.", status: 200 }
+      end
+
+      def unlike_comment
+        comment = Comment.find(params[:id])
+        comment.unliked_by current_user
+        render json: {response: "unlike comment.", status: 204}, status: 204
+      end
     end
   end
 end
