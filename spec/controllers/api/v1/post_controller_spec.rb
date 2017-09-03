@@ -4,13 +4,13 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     it "return 201 when post is created" do
       token = sign_in_as_registered
       post :create, params: FactoryGirl.attributes_for(:post)
+      byebug
       expect(response).to have_http_status(201)
     end
     it "return 400 when content is empty" do
       token = sign_in_as_registered
-      expect do
-        post :create, params: FactoryGirl.attributes_for(:post_unvalid)
-      end.to raise_error(RailsParam::Param::InvalidParameterError)
+      post :create, params: FactoryGirl.attributes_for(:post_unvalid)
+      expect(response).to have_http_status(400)
     end
   end
 
