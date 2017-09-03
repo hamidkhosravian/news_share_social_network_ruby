@@ -19,7 +19,7 @@ module Api
         param! :latitude, String, required: true, blank: false
         param! :longitude, String, required: true, blank: false
 
-        post = PostService.new(params, current_user).register
+        post = PostService.new(params, current_user).create
         render json: post[:post], status: 201
       end
 
@@ -27,12 +27,21 @@ module Api
         param! :content, String, required: false, blank: false
 
         post = Post.find(params[:id])
-        post.content = params[:content] unless params[:content].nil?
+        unless params[:content].nil?
+          post.content = params[:content]
+    	    hashtags = params[:content].scan(/#\w+/)
+          post.hashtag_list = []
+          post.hashtag_list << hashtags
+        end
         post.attachment = params[:attachment]
         post.categories = Category.find(params[:categories]) if params[:categories]
         post.save!
 
         render json: post
+      end
+
+      def destroy
+        Post.find(params[:id]).destroy
       end
     end
   end

@@ -10,7 +10,7 @@ class PostService
   # register post
   # if every thing was fine post saved in database
   # if somthing was wrong return error
-  def register
+  def create
     result = true
     errors = nil
     post = nil

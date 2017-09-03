@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       delete "profile/:user_id/unfollow" => "relationship#destroy"
 
       # post
-      resources :posts, only: [:create, :show, :update]
+      resources :posts, only: [:create, :show, :update, :destroy]
 
       # find near posts
       post   "near/posts" => "find_near#posts"
@@ -34,8 +34,16 @@ Rails.application.routes.draw do
       get    "categories" => "categories#index"
 
       # vote
-      post   "post/:id/like"    => "votes#like_post"
-      post   "post/:id/unlike"  => "votes#unlike_post"
+      post   "posts/:id/like"    => "votes#like_post"
+      post   "posts/:id/unlike"  => "votes#unlike_post"
+      post   "comments/:id/like"    => "votes#like_comment"
+      post   "comments/:id/unlike"  => "votes#unlike_comment"
+
+      # comment
+      get    "posts/:post_id/comments/:id" => "comments#show"
+      get    "posts/:post_id/comments" => "comments#index"
+      post   "posts/:id/comments" => "comments#create"
+      delete "posts/:id/comments" => "comments#destroy"
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830132057) do
+ActiveRecord::Schema.define(version: 20170903041331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20170830132057) do
     t.bigint "post_id", null: false
     t.index ["category_id", "post_id"], name: "index_categories_posts_on_category_id_and_post_id"
     t.index ["post_id", "category_id"], name: "index_categories_posts_on_post_id_and_category_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "profile_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -180,6 +190,8 @@ ActiveRecord::Schema.define(version: 20170830132057) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "profiles"
   add_foreign_key "identities", "users"
   add_foreign_key "posts", "profiles"
   add_foreign_key "profiles", "users"
