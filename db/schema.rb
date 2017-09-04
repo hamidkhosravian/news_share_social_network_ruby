@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903041331) do
+ActiveRecord::Schema.define(version: 20170904125000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,9 @@ ActiveRecord::Schema.define(version: 20170903041331) do
     t.string "attachment_content_type"
     t.integer "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer "comments_count", default: 0
+    t.integer "cached_votes_total"
+    t.integer "cached_votes_up"
     t.index ["profile_id"], name: "index_posts_on_profile_id"
   end
 
