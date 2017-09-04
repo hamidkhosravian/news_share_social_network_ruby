@@ -44,6 +44,11 @@ Rails.application.routes.draw do
       get    "posts/:post_id/comments" => "comments#index"
       post   "posts/:id/comments" => "comments#create"
       delete "posts/:id/comments" => "comments#destroy"
+
+      # populars
+      post   "populars/discussed" => "populars#discussed"
+      post   "populars/liked" => "populars#liked"
+
     end
   end
 

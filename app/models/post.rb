@@ -13,7 +13,7 @@ class Post < ApplicationRecord
 
   belongs_to :profile
   has_and_belongs_to_many :categories, -> { distinct }
-  has_many :comments, dependent: :destroy
+	has_many :comments, dependent: :destroy, counter_cache: true
 
   before_create :set_address
   after_create  :save_hashtags
